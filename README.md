@@ -9,10 +9,13 @@ It's a _slight_ hassle to get it all set up, so I thought I'd take advantage of 
 * instantclient-basic-linux.x64-12.1.0.2.0.zip
 * instantclient-sdk-linux.x64-12.1.0.2.0.zip
 
-With those in place, I merely build like...
+So verifying the right files are in place and building looks something likt this...
 
-```docker
-docker build -t papakpmartin/jupyter .
+```sh
+mac:~ me$ cd Documents/kpmartin-jupyter 
+mac:kpmartin-jupyter me$ ls
+Dockerfile					instantclient-basic-linux.x64-12.1.0.2.0.zip	instantclient-sdk-linux.x64-12.1.0.2.0.zip
+mac:kpmartin-jupyter me$ docker build -t papakpmartin/jupyter .
 ```
 
 ## Using this
