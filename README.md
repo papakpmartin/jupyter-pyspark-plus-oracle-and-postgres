@@ -2,14 +2,14 @@
 
 [Jupyter](http://jupyter.org) (formerly known as [iPython](http://ipython.org) Notebooks) is a wonderful tool to work with and analyze data using Python, providing the means to report and visualize by means of a nice web interface.
 
-I started learning my way through using this by developing some business reporting, and in order for thatto be worthwhile, I wanted to connect directly to live data. I have a few data stores I need to interact with, but most of what I needed was in Postgres and Oracle databases.
+I started learning my way through using this by developing some business reporting, and in order for that to be worthwhile, I wanted to connect directly to live data. I have a few data stores I need to interact with, but most of what I needed was in Postgres and Oracle databases.
 
 It's a _slight_ hassle to get it all set up, so I thought I'd take advantage of [Docker](https://docker.com). The starting point comes right from the Jupyter's [docker-stacks](https://github.com/jupyter/docker-stacks) and does not modify any of their conventions. This Dockerfile is as simple as I could think to make it, but it does require that you have - in the same directory as this Dockerfile - the "basic" and "SDK" Oracle Instant Client (for 64-bit Linux), which you can only get from Oracle by means of a free developer account (try [here](http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html)). At time of writing this README, the files I have are:
 
 * instantclient-basic-linux.x64-12.1.0.2.0.zip
 * instantclient-sdk-linux.x64-12.1.0.2.0.zip
 
-So verifying the right files are in place and building looks something likt this...
+So verifying the right files are in place and building looks something like this...
 
 ```sh
 mac:~ me$ cd Documents/kpmartin-jupyter 
