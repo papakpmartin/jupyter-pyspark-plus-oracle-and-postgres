@@ -1,5 +1,6 @@
 FROM jupyter/scipy-notebook
 
+MAINTAINER Ken Martin <ken@kpmartin.com>
 
 # Add Oracle Instantclient
 ADD instantclient-basic-linux.x64-12.1.0.2.0.zip /tmp/
@@ -23,11 +24,23 @@ RUN rm /tmp/instantclient-* \
 ENV ORACLE_HOME /home/jovyan/oracle/instantclient
 ENV LD_LIBRARY_PATH /home/jovyan/oracle/instantclient
 
+RUN pip install --upgrade pip
+
 RUN ldconfig \
 && pip install cx_oracle
 
 RUN apt-get install -y libpq-dev python-dev \
 && pip install psycopg2
+
+# tools for leafletjs maps, and for working with some spatial data
+RUN apt-get install -y libgdal-dev
+RUN pip install folium
+RUN pip install geopandas
+RUN pip install geographiclib
+
+# for exporting to Excel files
+RUN pip install xlwt
+RUN pip install XlsxWriter
 
 # make sure we get back to the expected user
 USER $NB_USER
