@@ -30,17 +30,23 @@ RUN ldconfig \
 && pip install cx_oracle
 
 RUN apt-get install -y libpq-dev python-dev \
-&& pip install psycopg2
+&& pip install psycopg2-binary
 
 # tools for leafletjs maps, and for working with some spatial data
-RUN apt-get install -y libgdal-dev
-RUN pip install folium
-RUN pip install geopandas
-RUN pip install geographiclib
+RUN apt-get install -y libgdal-dev \
+&& pip install folium \
+&& pip install geopandas \
+&& pip install geographiclib
 
 # for exporting to Excel files
-RUN pip install xlwt
-RUN pip install XlsxWriter
+RUN pip install xlwt \
+&& pip install XlsxWriter
+
+# for working with user agent in logs
+RUN pip install pyyaml ua-parser
+
+# try adding JupyterLab
+RUN pip install jupyterlab
 
 # make sure we get back to the expected user
 USER $NB_USER
