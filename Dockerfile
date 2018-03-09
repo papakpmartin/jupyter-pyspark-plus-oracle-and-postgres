@@ -7,7 +7,7 @@ ADD instantclient-basic-linux.x64-12.1.0.2.0.zip /tmp/
 ADD instantclient-sdk-linux.x64-12.1.0.2.0.zip /tmp/
 
 # run in the target user
-USER $NB_USER
+USER $NB_UID
 
 RUN unzip -q /tmp/instantclient-basic-linux.x64-12.1.0.2.0.zip -d /home/jovyan/oracle/ \
 && unzip -q /tmp/instantclient-sdk-linux.x64-12.1.0.2.0.zip -d /home/jovyan/oracle/ \
@@ -45,8 +45,8 @@ RUN pip install xlwt \
 # for working with user agent in logs
 RUN pip install pyyaml ua-parser
 
-# try adding JupyterLab
+# add JupyterLab
 RUN pip install jupyterlab
 
 # make sure we get back to the expected user
-USER $NB_USER
+USER $NB_UID
